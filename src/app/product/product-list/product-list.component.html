@@ -1,0 +1,26 @@
+<!--<h1>Products</h1>
+<div *ngFor="let product of products">
+<ul >
+
+  
+  <li> {{product.productName}}</li>
+  <li> {{product.companyName}}</li>
+
+</ul>
+</div> -->
+
+
+
+<h1>Products</h1>
+
+<ul>
+  <li *ngFor="let product of products">
+    
+
+    <ul>
+      <a>{{product.companyName}}</a>
+      <li>{{product.productName}}</li>
+     
+    </ul>
+  </li>
+</ul>
