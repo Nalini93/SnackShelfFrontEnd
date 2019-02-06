@@ -1,26 +1,28 @@
-<!--<h1>Products</h1>
-<div *ngFor="let product of products">
-<ul >
-
-  
-  <li> {{product.productName}}</li>
-  <li> {{product.companyName}}</li>
-
-</ul>
-</div> -->
-
-
+<html>
+  <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div style = "position:absolute; right:80px; top:20px;">
+     
+  <a href="#" class="btn btn-info btn-lg">
+    <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
+  </a>
+</div>
 
 <h1>Products</h1>
 
 <ul>
   <li *ngFor="let product of products">
-    
+  <a routerLink="/product-details/{{product.id}}">{{product.companyName}}</a> 
 
     <ul>
-      <a>{{product.companyName}}</a>
+      
       <li>{{product.productName}}</li>
      
     </ul>
   </li>
 </ul>
+</body>
+</html>

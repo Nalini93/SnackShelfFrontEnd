@@ -10,7 +10,7 @@ body {
 
 #container {
     display: grid;
-    grid-template-columns: 70px auto;
+    grid-template-columns:  auto;
     height: 100%;
   }
   #container #content {

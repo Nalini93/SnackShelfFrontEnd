@@ -1,3 +1,12 @@
-<p>
-  product-details works!
-</p>
+<h1>{{ product.productName }}</h1>
+
+<ul>
+  <li><strong>Company:</strong> {{ product.companyName }}</li>
+  <li><strong>Type Product:</strong> {{ product.type }}</li>
+  <li><strong>Production Date:</strong> {{ product.productionDate }}</li>
+  <li><strong>Expiration Date:</strong> {{ product.expirationDate }}</li>
+  <li><strong>Price:</strong> {{ product.price }}</li>
+</ul>
+<a [routerLink]="['/cart', { id:product.id }]">
+<button type="button" class="btn btn-default" >Add</button>
+</a>
