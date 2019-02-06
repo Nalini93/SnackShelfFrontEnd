@@ -2,22 +2,47 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from "@angular/router";
 import { ProductService } from '../product/product.service';
+import { OrderService } from '../order/order.service';
+import {UserService} from '../user/user.service';
 import { Product } from '../product/product';
 import {Item} from '../cart/item';
+import { Order } from '../order/order';
+import { User } from '../user/user';
+import { log } from 'util';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+
   prod: any;
+  user1:any;
   items: Item[] = [];
+  bodyOrder:Order = new Order();
+  productItem:Product;
+  productsItem:Array<Product>=[];
+  mockedUser:User = new User();
+  allUsers : Array<User>=[];
+  id1: any="5c5aefde25b9198a940e2fa9";
 	private total: number = 0;
-  constructor(private route: ActivatedRoute, private productService: ProductService) { 
-  //  this.route.params.subscribe( params => this.id = params['id'] );
+  constructor(private route: ActivatedRoute, private productService: ProductService, private orderService: OrderService, private userService: UserService) { 
+  
+
   }
   
   ngOnInit() {
+	/*this.mockedUser.id=this.id;
+	this.mockedUser.name="Nalini";
+	this.mockedUser.surname="Gadkary";
+	this.mockedUser.username="nalu";
+	this.mockedUser.password="nalubalu";*/
+	this.userService.getUser(this.id1).subscribe(data => {
+      
+		console.log(data);
+		this.user1 = data;
+		console.log(this.user1);
+	  });
     this.route.params.subscribe(params => {
 			var id = params['id'];
 			if (id) {
@@ -28,7 +53,9 @@ export class CartComponent implements OnInit {
 				var item: Item = {
 					product: this.prod,
 					quantity: 1
-        };
+					
+		};
+		
         //if (localStorage.getItem('cart') == null)
 				if (localStorage.getItem('cart') == null) {
 					let cart: any = [];
@@ -59,7 +86,7 @@ export class CartComponent implements OnInit {
 			} else {
 				this.loadCart();
       }
-     
+	  
 		});
 		
 	}
@@ -92,6 +119,32 @@ export class CartComponent implements OnInit {
 		this.loadCart();
 	}
 
+	createOrder(elements){
+		console.log(elements);
+		for (let index = 0; index < elements.length; index++) {
+			this.productsItem.push(elements[index].product)	
+		}
+		this.bodyOrder.products = this.productsItem;
+		this.bodyOrder.user=this.user1;
+		this.bodyOrder.quantity=10;
+		this.bodyOrder.total=30;
+		
+		this.orderService.createOrder(this.bodyOrder).subscribe(result => console.log(result))
+		alert("order was successful")
+		console.log(this.bodyOrder);
+		/*elements.forEach(element => {
+			this.productsItem.push(element.product)
+		});*/
+		
+
+
+		
+
+		
+	}
+
+	
+  
 
 }
     

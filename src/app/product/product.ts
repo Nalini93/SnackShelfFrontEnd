@@ -7,6 +7,7 @@ export class Product{
     expirationDate: string;
     price: number;
     
+    
     constructor(id: string, type: string,  productName: string, companyName: string, productionDate:string, expirationDate: string, price: number ){
     this.id = id;
     this.type=type;

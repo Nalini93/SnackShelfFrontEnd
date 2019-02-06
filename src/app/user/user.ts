@@ -6,8 +6,8 @@ export class User{
     password:string;
     
     
-    constructor(id: string, name: string,  surname: string, username: string, password:string){
-    this.id = id;
+    constructor(id?: string, name?: string,  surname?: string, username?: string, password?:string){
+    this.id=id;
     this.name=name;
     this.surname=surname;
     this.username=username;
