@@ -8,13 +8,13 @@
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" ngModel name= "password"  id="password" class="form-control" required>
     <a>
-    <button type="button" class="btn btn-success" (click)=checkLogin(loginForm.form)>Login</button>
+    <button type="button" class="btn btn-default" (click)=checkLogin(loginForm.form)>Login</button>
     </a>
   </div>
 
-  <div class="form-group" style="background-color:#f1f1f1">
+  <div class="form-group">
     <a [routerLink]="['/register']">
-    <button type="button" >Register</button>
+    <button type="button" class="btn btn-default" >Register</button>
     </a>
   </div>
 </form>

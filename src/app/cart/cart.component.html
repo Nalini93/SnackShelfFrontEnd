@@ -1,13 +1,14 @@
+<body>
 <button type="button" class="btn btn-default" (click)=logout()>Logout</button>
-<h3>Cart Info</h3>
+<h1>Cart Info</h1>
 
-<table id="customers" border="1">
+<table id="customers" >
     <tr>
         
-        <th>remove</th>
+        <th>Remove</th>
         <th>Name</th>
         <th>Company</th>
-        <th>Price</th>
+        <th>Price £</th>
         <th>Quantity</th>
         <th>Sub Total</th>
     </tr>
@@ -15,11 +16,13 @@
         <td class="text-aligned">
             <a (click)="remove(item.product.id)">X</a>
         </td>
+        
         <td>{{item.product.productName}}</td>
         <td>{{item.product.companyName}}</td>  
         <td>{{item.product.price}}</td>
         <td>{{item.quantity}}</td>
         <td>{{item.product.price * item.quantity}}</td>
+    
     </tr>
     <tr>
         <td colspan="6" class="aligned-right">Total</td>
@@ -33,6 +36,6 @@
 <a [routerLink]="['/product-list']">
     <button type="button" class="btn btn-default">Back</button>
 </a>
-
+</body>
   
   

@@ -5,18 +5,23 @@
 .aligned-right{
     text-align: right;
 }
-
+body {
+    margin: 0;
+    background: #F2F2F2;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+}
 
 #customers {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+    font-family: 'Montserrat', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
 
 #customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
 
 #customers tr:nth-child(even){background-color: #f2f2f2;}
 
@@ -27,8 +32,15 @@
   padding-bottom: 12px;
   text-align: left;
   background-color: #00a8ff;
-  color: white;
+  color: black;
+  
 }
+#customers td {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 8px;
+  }
 
 button {
     background-color: #00a8ff;
