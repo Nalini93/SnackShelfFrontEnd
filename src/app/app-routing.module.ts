@@ -3,14 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductDetailsComponent} from './product/product-details/product-details.component';
 import { CartComponent} from './cart/cart.component';
-import {OrderComponent} from './order/order.component'
+import {OrderComponent} from './order/order.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+
 const routes: Routes = [
-  
-  { path: '', component: ProductListComponent },
-  { path: 'product-details/:id', component: ProductDetailsComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'order', component: OrderComponent },
- 
+
+{ path: '', component: LoginComponent },
+{ path: 'register', component: RegisterComponent },
+{ path: 'product-list', component: ProductListComponent },
+{ path: 'product-details/:id', component: ProductDetailsComponent },
+{ path: 'cart', component: CartComponent },
+{ path: 'order', component: OrderComponent },
+{ path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -19,3 +24,12 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
+/*{ path: '', component: HomeComponent, canActivate: [AuthGuard] },
+{ path: 'login', component: LoginComponent },
+{ path: 'register', component: RegisterComponent },*/
+
+
+/*{ path: '', component: ProductListComponent },
+  { path: 'product-details/:id', component: ProductDetailsComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'order', component: OrderComponent },*/

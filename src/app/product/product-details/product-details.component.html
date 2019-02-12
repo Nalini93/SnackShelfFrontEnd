@@ -1,4 +1,6 @@
-<h1>{{ product.productName }}</h1>
+
+ <button type="button" class="btn btn-default" (click)=logout()>Logout</button>
+ <h1>{{ product.productName }}</h1>
 
 <ul>
   <li><strong>Company:</strong> {{ product.companyName }}</li>
@@ -9,4 +11,7 @@
 </ul>
 <a [routerLink]="['/cart', { id:product.id }]">
 <button type="button" class="btn btn-default" >Add</button>
+</a>
+<a [routerLink]="['/product-list']">
+  <button type="button" class="btn btn-default" >Back</button>
 </a>

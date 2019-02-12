@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
  
 import { ProductService } from '../product.service';
 import { Product } from '../product';
- 
+import { RouterModule, Routes, Router } from '@angular/router';
 @Component({
   selector: 'product-list',
   templateUrl: './product-list.component.html',
@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit {
  
   products: any;
  
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private route : Router) { }
  
   ngOnInit() {
     console.log("NgOnInit ProductList");
@@ -26,7 +26,10 @@ export class ProductListComponent implements OnInit {
    console.log(this.products);
     
   }
-  
+  logout() {
+    localStorage.clear();
+    this.route.navigate(['/']);
+  }
  /* getList() {
     this.productService.getProductList().subscribe(data => {
       data => {
@@ -42,12 +45,3 @@ export class ProductListComponent implements OnInit {
 }
 
 
-/*ListProduct() {
-  this.productService.getProductList().subscribe()   .deleteCustomer(this.customer.id)
-    .subscribe(
-      data => {
-        console.log(data);
-        this.listComponent.reloadData();
-      },
-      error => console.log(error));
-}*/

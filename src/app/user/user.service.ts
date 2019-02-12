@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {User} from '../user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   private baseUrl = 'http://localhost:8080/users';
+  userIdFromComponent : string;
 
   constructor(private http: HttpClient) { }
 
@@ -15,8 +17,8 @@ export class UserService {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  createUser(product: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}` + `/`, product);
+  createUser(user: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}` + `/`, user);
   }
 
   updateUser(id: string, value: any): Observable<Object> {
@@ -32,6 +34,12 @@ export class UserService {
     
     
   }
+  register(user: Object):Observable<Object> {
+    return this.http.post(`${this.baseUrl}/register/`, user);
+}
+  login(user:Object):Observable<Object>{
 
+    return this.http.post(`${this.baseUrl}/login/`, user);
+  }
   
 }

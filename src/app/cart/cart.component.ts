@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ProductService } from '../product/product.service';
 import { OrderService } from '../order/order.service';
 import {UserService} from '../user/user.service';
@@ -24,19 +24,21 @@ export class CartComponent implements OnInit {
   productsItem:Array<Product>=[];
   mockedUser:User = new User();
   allUsers : Array<User>=[];
-  id1: any="5c5aefde25b9198a940e2fa9";
+  id1: string;
 	private total: number = 0;
-  constructor(private route: ActivatedRoute, private productService: ProductService, private orderService: OrderService, private userService: UserService) { 
+  constructor(private route: ActivatedRoute, private productService: ProductService, 
+	private orderService: OrderService, private userService: UserService, private router:Router) { 
   
 
   }
   
   ngOnInit() {
-	/*this.mockedUser.id=this.id;
-	this.mockedUser.name="Nalini";
-	this.mockedUser.surname="Gadkary";
-	this.mockedUser.username="nalu";
-	this.mockedUser.password="nalubalu";*/
+	  console.log("ngOnInit CartComponent");
+	  //this.id1 = this.userService.userIdFromComponent;
+	  this.id1=JSON.parse(localStorage.getItem('loggeduserid'));
+	  console.log(this.id1);
+
+	
 	this.userService.getUser(this.id1).subscribe(data => {
       
 		console.log(data);
@@ -119,6 +121,17 @@ export class CartComponent implements OnInit {
 		this.loadCart();
 	}
 
+	emptyCart(): void {
+		let cart: any = JSON.parse(localStorage.getItem('cart'));
+		let index: number = -1;
+		for (var i = 0; i < cart.length; i++) {
+			cart.splice(i, 1);
+			
+		}
+		localStorage.setItem("cart", JSON.stringify(cart));
+		this.loadCart();
+	}
+
 	createOrder(elements){
 		console.log(elements);
 		for (let index = 0; index < elements.length; index++) {
@@ -126,22 +139,34 @@ export class CartComponent implements OnInit {
 		}
 		this.bodyOrder.products = this.productsItem;
 		this.bodyOrder.user=this.user1;
-		this.bodyOrder.quantity=10;
-		this.bodyOrder.total=30;
-		
-		this.orderService.createOrder(this.bodyOrder).subscribe(result => console.log(result))
-		alert("order was successful")
+		console.log(this.user1);
+		this.bodyOrder.total=this.total;
 		console.log(this.bodyOrder);
+		
+		this.orderService.createOrder(this.bodyOrder).subscribe(result =>{
+			console.log(result)
+			alert("order was successful")
+			this.emptyCart();
+			this.router.navigate(['/product-list']);
+		},
+		error => {
+			console.error(error);
+			console.log(error.status);
+			alert("order is empty")
+			this.router.navigate(['/cart']);
+		});
+		
+		
 		/*elements.forEach(element => {
 			this.productsItem.push(element.product)
 		});*/
 		
-
-
-		
-
-		
 	}
+
+	logout() {
+		localStorage.clear();
+		this.router.navigate(['/']);
+	  }
 
 	
   

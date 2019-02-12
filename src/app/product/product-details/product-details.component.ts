@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from "@angular/router";
 import { ProductService } from '../product.service';
 import { Product } from '../product';
+import { RouterModule, Routes, Router } from '@angular/router';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -11,7 +12,7 @@ import { Product } from '../product';
 export class ProductDetailsComponent implements OnInit {
   product: any;
   //private products: Array<Product> = [];
-  constructor(private route: ActivatedRoute, private productService: ProductService ) {
+  constructor(private route: ActivatedRoute, private productService: ProductService, private router: Router ) {
     this.route.params.subscribe( params => this.product = params.id );
 
    }
@@ -29,6 +30,10 @@ export class ProductDetailsComponent implements OnInit {
     console.log(this.product);
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
   /*addProduct(element : Product ){
     console.log(element.companyName);
     //this.products.push(element);

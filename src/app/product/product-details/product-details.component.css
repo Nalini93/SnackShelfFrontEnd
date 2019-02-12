@@ -1,0 +1,15 @@
+button {
+    background-color: #00a8ff;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    display: inline-block
+  }
+  
+  /* Add a hover effect for buttons */
+  button:hover {
+    opacity: 0.8;
+  }

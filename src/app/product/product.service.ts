@@ -1,7 +1,7 @@
 
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from './product';
 
@@ -12,6 +12,12 @@ import { Product } from './product';
 export class ProductService {
 
   private baseUrl = 'http://localhost:8080/products';
+  public httpOptions = {
+    headers: new HttpHeaders({ 
+      'Access-Control-Allow-Origin':'*'
+    })
+  };
+  
 
   constructor(private http: HttpClient) { }
 
@@ -32,11 +38,12 @@ export class ProductService {
   }
 
   getProductList(): Observable<any> {
+
     return this.http.get(`${this.baseUrl}/`)
  
   }
   findProduct(id: string): Observable<Product> {
-    return this.http.get<Product>(`${this.baseUrl}/${id}`) ;
+    return this.http.get<Product>(`${this.baseUrl}/${id}`, this.httpOptions) ;
   } 
 
   
