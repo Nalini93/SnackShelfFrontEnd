@@ -18,18 +18,18 @@
     <li *ngFor="let order of orders">
       <ul>
         <h3><strong>Order</strong></h3>
-        <li><strong>IdOrder:</strong>{{order._id}}</li>
-        <li><strong>Total:</strong>{{order.total}}</li>
+        <li><strong>Id Order: </strong>{{order._id}}</li>
+        <li><strong>Total Price: </strong>{{order.total}}</li>
         
        <li *ngFor="let product of order.products">
          <ul>
             <li><strong>PRODUCT</strong></li>
-            <li><strong>Company:</strong>{{ product.companyName }}</li>
-            <li><strong>ProductName:</strong>{{ product.productName }}</li>
-            <li><strong>Type:</strong>{{product.type}}</li>
-            <li><strong>Price:</strong>{{product.price}}</li>
-            <li><strong>ProductionDate:</strong>{{product.productionDate}}</li>
-            <li><strong>ProductionDate:</strong>{{product.expirationDate}}</li>
+            <li><strong>Company: </strong>{{ product.companyName }}</li>
+            <li><strong>Product Name: </strong>{{ product.productName }}</li>
+            <li><strong>Type: </strong>{{product.type}}</li>
+            <li><strong>Price: </strong>{{product.price}}</li>
+            <li><strong>Production Date: </strong>{{product.productionDate}}</li>
+            <li><strong>Expiration Date: </strong>{{product.expirationDate}}</li>
          </ul>
        </li>
       </ul>

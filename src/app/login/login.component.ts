@@ -3,9 +3,8 @@ import {UserService} from '../user/user.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {User} from '../user/user';
 import { RouterModule, Routes, Router } from '@angular/router';
-//import { privateEncrypt } from 'crypto';
-//import { encode } from 'punycode';
-//import {Bcrypt} from 'bcrypt';
+import { sha256 } from 'js-sha256';
+
 
 
 
@@ -29,9 +28,13 @@ export class LoginComponent implements OnInit {
   }
   
   checkLogin({value}:{value: User} ) {
-    //value.password=encode(this.user.password);
+    if(!(value.password=="")){
+    console.log(value.password);
+    value.password=sha256(value.password);
+    console.log(value.password);
+    this.user.password=value.password;
     this.user = value;
-  console.log(value);
+    console.log(this.user);
     this.userService.login(this.user).subscribe(result => {
       console.log(result);
       this.userLogged = result;
@@ -56,8 +59,10 @@ export class LoginComponent implements OnInit {
       //alert("Error: user not found");
       this.route.navigate(['/']);
     });
-
-		console.log(this.user);
+  }else{
+    alert("Missing Field");
+    console.log(this.user);
+  }
   }
   
   }
