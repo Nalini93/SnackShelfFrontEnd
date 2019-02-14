@@ -7,6 +7,7 @@ import {OrderComponent} from './order/order.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import {OrderListComponent} from './order/order-list/order-list.component'
 
 const routes: Routes = [
 
@@ -17,6 +18,7 @@ const routes: Routes = [
 { path: 'cart', component: CartComponent },
 { path: 'order', component: OrderComponent },
 { path: 'user-list', component: UserListComponent},
+{path: 'order-list', component: OrderListComponent},
 { path: '**', redirectTo: '' }
 ];
 
@@ -26,12 +28,3 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-/*{ path: '', component: HomeComponent, canActivate: [AuthGuard] },
-{ path: 'login', component: LoginComponent },
-{ path: 'register', component: RegisterComponent },*/
-
-
-/*{ path: '', component: ProductListComponent },
-  { path: 'product-details/:id', component: ProductDetailsComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'order', component: OrderComponent },*/

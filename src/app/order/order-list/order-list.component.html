@@ -1,0 +1,39 @@
+<html>
+  <head>
+     
+</head>
+<body>
+<button type="button" class="btn btn-default" (click)=logout()>Logout</button>
+    
+        
+  <a routerLink="/cart">
+    <button type="button" class="btn btn-default ">
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        Shopping Cart
+    </button>
+  </a>
+<h1>Orders</h1>
+
+<ul>
+    <li *ngFor="let order of orders">
+      <ul>
+        <h3><strong>Order</strong></h3>
+        <li><strong>IdOrder:</strong>{{order._id}}</li>
+        <li><strong>Total:</strong>{{order.total}}</li>
+        
+       <li *ngFor="let product of order.products">
+         <ul>
+            <li><strong>PRODUCT</strong></li>
+            <li><strong>Company:</strong>{{ product.companyName }}</li>
+            <li><strong>ProductName:</strong>{{ product.productName }}</li>
+            <li><strong>Type:</strong>{{product.type}}</li>
+            <li><strong>Price:</strong>{{product.price}}</li>
+            <li><strong>ProductionDate:</strong>{{product.productionDate}}</li>
+            <li><strong>ProductionDate:</strong>{{product.expirationDate}}</li>
+         </ul>
+       </li>
+      </ul>
+    </li>
+  </ul>
+  </body>
+  </html>

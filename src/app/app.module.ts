@@ -16,6 +16,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { OrderListComponent } from './order/order-list/order-list.component';
+import { OrderService } from './order/order.service';
 
 @NgModule({
 declarations: [
@@ -29,6 +31,7 @@ AlertComponent,
 LoginComponent,
 RegisterComponent,
 UserListComponent,
+OrderListComponent,
 
 
 
@@ -45,7 +48,8 @@ HttpClientModule,
 ],
 providers: [
     AlertService,
-    UserService
+    UserService,
+    OrderService
     
    
 ],

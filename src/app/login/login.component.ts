@@ -3,7 +3,9 @@ import {UserService} from '../user/user.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {User} from '../user/user';
 import { RouterModule, Routes, Router } from '@angular/router';
-
+//import { privateEncrypt } from 'crypto';
+//import { encode } from 'punycode';
+//import {Bcrypt} from 'bcrypt';
 
 
 
@@ -16,8 +18,8 @@ export class LoginComponent implements OnInit {
   private user: User;
   userLogged: User = new User ();
   userIdLogged:string;
-  //public checkUser : boolean = true;
-  //loginForm: FormGroup;
+
+ 
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private route : Router) { }
 
@@ -25,10 +27,9 @@ export class LoginComponent implements OnInit {
    this.user= new User(); 
    this.userLogged = new User();
   }
-  //get form(){
-  //  return this.loginForm.controls;
-  //}
+  
   checkLogin({value}:{value: User} ) {
+    //value.password=encode(this.user.password);
     this.user = value;
   console.log(value);
     this.userService.login(this.user).subscribe(result => {
@@ -45,14 +46,20 @@ export class LoginComponent implements OnInit {
 
     },
     error => {
+      if (error.status==404){
+        alert("Error: username not found");
+      }else {
+        alert("Incorrect Password");
+      }
       console.error(error);
       console.log(error.status);
-      alert("Error: user not found");
+      //alert("Error: user not found");
       this.route.navigate(['/']);
     });
 
 		console.log(this.user);
   }
+  
   }
 
  

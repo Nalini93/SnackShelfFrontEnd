@@ -147,7 +147,7 @@ export class CartComponent implements OnInit {
 			console.log(result)
 			alert("order was successful")
 			this.emptyCart();
-			this.router.navigate(['/product-list']);
+			this.router.navigate(['/order-list']);
 		},
 		error => {
 			console.error(error);

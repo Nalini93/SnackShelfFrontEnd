@@ -33,6 +33,11 @@ export class OrderService {
     return this.http.get(`${this.baseUrl}/`)
  
   }
+
+  getOrderListByUser(id: String):Observable<any>{
+
+    return this.http.get(`${this.baseUrl}/listorder/${id}`);
+  }
   
 
   
