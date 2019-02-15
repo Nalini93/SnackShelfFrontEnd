@@ -25,7 +25,9 @@ export class CartComponent implements OnInit {
   mockedUser:User = new User();
   allUsers : Array<User>=[];
   id1: string;
+  totalquantity:number=0;
 	private total: number = 0;
+
   constructor(private route: ActivatedRoute, private productService: ProductService, 
 	private orderService: OrderService, private userService: UserService, private router:Router) { 
   
@@ -66,13 +68,13 @@ export class CartComponent implements OnInit {
 				} else {
 					let cart: any = JSON.parse(localStorage.getItem('cart'));
 					let index: number = -1;
-			  	for (var i = 0; i < cart.length; i++) {
+			  	/*for (var i = 0; i < cart.length; i++) {
 						let item: Item = JSON.parse(cart[i]);
 						if (item.product.id == id) {
 							index = i;
 							break;
 						}
-					}
+					}*/
 					if (index == -1) {
 						cart.push(JSON.stringify(item));
 						localStorage.setItem('cart', JSON.stringify(cart));
@@ -81,6 +83,7 @@ export class CartComponent implements OnInit {
 						item.quantity += 1;
 						cart[index] = JSON.stringify(item);
 						localStorage.setItem("cart", JSON.stringify(cart));
+						
 					}
 				}
         this.loadCart();
@@ -125,7 +128,7 @@ export class CartComponent implements OnInit {
 		let cart: any = JSON.parse(localStorage.getItem('cart'));
 		let index: number = -1;
 		for (var i = 0; i < cart.length; i++) {
-			cart.splice(i, 1);
+			cart.splice(i);
 			
 		}
 		localStorage.setItem("cart", JSON.stringify(cart));
@@ -133,7 +136,17 @@ export class CartComponent implements OnInit {
 	}
 
 	createOrder(elements){
+		console.log(elements.length);
 		console.log(elements);
+		for(let item of this.items){
+			this.totalquantity=((item.quantity)+this.totalquantity);
+		}
+		console.log(this.totalquantity);
+		/*var totalquantity:Item;
+		
+		for(var element in elements){
+			totalquantity=totalquantity+element.quantity;
+		}*/
 		for (let index = 0; index < elements.length; index++) {
 			this.productsItem.push(elements[index].product)	
 		}

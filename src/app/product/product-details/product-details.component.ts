@@ -34,6 +34,14 @@ export class ProductDetailsComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['/']);
   }
+
+  controlAdd(product: any){
+    console.log(product.quantity)
+    if(product.quantity<=0){
+      alert("Product is out of stock")
+    }else
+    this.router.navigate(['/cart', { id:product.id }]);
+  }
   /*addProduct(element : Product ){
     console.log(element.companyName);
     //this.products.push(element);
@@ -44,7 +52,9 @@ export class ProductDetailsComponent implements OnInit {
    
   }*/
   //aggiunge il prodotto e la quantita ordinata al carrello della spesa
-  
+
+  //<a [routerLink]="['/cart', { id:product.id }]">
+
 }
 
 

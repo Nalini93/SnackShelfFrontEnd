@@ -6,9 +6,10 @@ export class Product{
     productionDate:string;
     expirationDate: string;
     price: number;
+    quantity: number;
     
     
-    constructor(id: string, type: string,  productName: string, companyName: string, productionDate:string, expirationDate: string, price: number ){
+    constructor(id: string, type: string,  productName: string, companyName: string, productionDate:string, expirationDate: string, price: number, quantity: number ){
     this.id = id;
     this.type=type;
     this.productName=productName;
@@ -16,5 +17,6 @@ export class Product{
     this.productionDate=productionDate;
     this.expirationDate=expirationDate;
     this.price=price;
+    this.quantity=quantity;
     }
     }

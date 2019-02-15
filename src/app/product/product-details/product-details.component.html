@@ -8,10 +8,12 @@
   <li><strong>Production Date:</strong> {{ product.productionDate }}</li>
   <li><strong>Expiration Date:</strong> {{ product.expirationDate }}</li>
   <li><strong>Price:</strong> {{ product.price }}</li>
+  <li><strong>In Stock:</strong> {{ product.quantity }}</li>
 </ul>
-<a [routerLink]="['/cart', { id:product.id }]">
-<button type="button" class="btn btn-default" >Add</button>
-</a>
+
+
+<button type="button" class="btn btn-default" (click)="controlAdd(product)" >Add</button>
+
 <a [routerLink]="['/product-list']">
   <button type="button" class="btn btn-default" >Back</button>
 </a>
