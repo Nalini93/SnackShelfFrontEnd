@@ -1,6 +1,10 @@
+<div style="margin:auto; width: 70%; margin-top: 30px;">
+  <app-search-bar (OnSelectedOption)="onSelectedOption($event)"></app-search-bar>
+</div>
+
 <html>
   <head>
-     
+       
 </head>
 <body>
     <button type="button" class="btn btn-default" (click)=logout()>Logout</button>
@@ -17,7 +21,7 @@
 <h1>Products</h1>
 
 <ul>
-  <li *ngFor="let product of products">
+  <li *ngFor="let product of products" >
   <a routerLink="/product-details/{{product.id}}">{{product.productName}}</a> 
 
     <ul>

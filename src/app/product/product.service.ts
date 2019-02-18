@@ -10,7 +10,8 @@ import { Product } from './product';
   providedIn: 'root'
 })
 export class ProductService {
-
+  searchOption=[];
+  public productsData: Product[];
   private baseUrl = 'http://localhost:8080/products';
   public httpOptions = {
     headers: new HttpHeaders({ 
@@ -46,42 +47,20 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}/${id}`, this.httpOptions) ;
   } 
 
-  
+  filteredListOptions() {
+    let products = this.productsData;
+        let filteredPostsList = [];
+        for (let product of products) {
+            for (let options of this.searchOption) {
+                if (options.productName === product.productName) {
+                  filteredPostsList.push(product);
+                }
+            }
+        }
+        console.log(filteredPostsList);
+        return filteredPostsList;
+  }
 }
+  
 
-/*import { Injectable } from '@angular/core';
-import { Product } from "./product";
-import { Http, Response } from "@angular/http";
-import { Headers, RequestOptions } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-@Injectable()
-export class ProductService {
-private apiUrl = '/api/employees';
-constructor(private http: HttpClient) {
- }
-findAll(): Promise<Array<Product>> {
- return this.http.get(this.apiUrl)
- .toPromise()
- .then(response => response.json() as Product[])
- .catch(this.handleError);
- }
-createEmployee(product: Product): Promise<Array<Product>> {
- let empHeaders = new Headers({ 'Content-Type': 'application/json' });
- return this.http.post(this.apiUrl, JSON.stringify(product), { headers: empHeaders })
- .toPromise()
- .then(response => response.json() as Product[])
- .catch(this.handleError);
- }
-deleteEmployeeById(id: number): Promise<Array<Product>> {
- const url = `${this.apiUrl}/${id}`;
- return this.http.delete(url)
- .toPromise()
- .then(response => response.json() as Product[])
- .catch(this.handleError);
- }
-private handleError(error: any): Promise<Array<any>> {
- console.error('An error occurred', error);
- return Promise.reject(error.message || error);
- }
-}*/
+

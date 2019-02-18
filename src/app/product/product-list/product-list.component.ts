@@ -10,8 +10,8 @@ import { RouterModule, Routes, Router } from '@angular/router';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
- 
-  products: any;
+  
+  products: Product[]; //any
  
   constructor(private productService: ProductService, private route : Router) { }
  
@@ -20,26 +20,35 @@ export class ProductListComponent implements OnInit {
     
    //this.products = this.productService.getProductList();
    this.productService.getProductList().subscribe(data => {
-    console.log(data);
      this.products = data;
-   })
-   console.log(this.products);
+     console.log(data);
+     this.productService.productsData=data;
+     
+    });
+   //console.log(this.products);
     
   }
   logout() {
     localStorage.clear();
     this.route.navigate(['/']);
   }
- /* getList() {
-    this.productService.getProductList().subscribe(data => {
-      data => {
-        this.products$ = data;
-      }
-});
+
+  onSelectedFilter(e: any) {
+    this.getFilteredExpenseList();
+    console.log(this.getFilteredExpenseList);
+  }
+
+  getFilteredExpenseList() {
+    if (this.productService.searchOption.length > 0){
+      this.products = this.productService.filteredListOptions();
+      
+    }else {
+      this.products = this.productService.productsData;
+    }
+
+  }
   
  
- 
-}*/
 
 
 }

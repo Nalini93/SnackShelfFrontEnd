@@ -12,13 +12,16 @@ import { OrderComponent } from './order/order.component';
 import { AlertComponent } from './alert/alert.component';
 import {AlertService} from './alert/alert.service';
 import {UserService} from './user/user.service';
+import {ProductService} from './product/product.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { OrderListComponent } from './order/order-list/order-list.component';
 import { OrderService } from './order/order.service';
-
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import {MatIconModule, MatInputModule,MatAutocompleteModule, MatChipsModule,MatFormFieldModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
 declarations: [
 AppComponent,
@@ -32,6 +35,7 @@ LoginComponent,
 RegisterComponent,
 UserListComponent,
 OrderListComponent,
+SearchBarComponent,
 
 
 
@@ -42,6 +46,12 @@ FormsModule,
 ReactiveFormsModule,
 AppRoutingModule,
 HttpClientModule,
+MatIconModule, 
+MatInputModule,
+MatAutocompleteModule,
+MatChipsModule,
+MatFormFieldModule,
+BrowserAnimationsModule
 
 
 
@@ -49,7 +59,8 @@ HttpClientModule,
 providers: [
     AlertService,
     UserService,
-    OrderService
+    OrderService,
+    ProductService
     
    
 ],
