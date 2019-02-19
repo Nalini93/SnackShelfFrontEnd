@@ -14,10 +14,10 @@ export class SearchBarComponent implements OnInit {
     myControl = new FormControl();
     filteredOptions: Observable<string[]>;
     allProducts: Product[];
-    autoCompleteList: any[]
+    autoCompleteList: any[];
 
     @ViewChild('autocompleteInput') autocompleteInput: ElementRef;
-    @Output() onSelectedOption = new EventEmitter();
+    @Output() onSelectedOption: EventEmitter<any> = new EventEmitter();
   
     constructor(private productService: ProductService) { }
 
@@ -54,13 +54,15 @@ displayFn(product: Product) {
 
 filterPostList(event) {
   var products = event.source.value;
+  console.log(products);
   if (!products) {
       this.productService.searchOption = []
   }
   else {
 
       this.productService.searchOption.push(products);
-      this.onSelectedOption.emit(this.productService.searchOption)
+      this.onSelectedOption.emit(this.productService.searchOption);
+      console.log(this.productService.searchOption);
   }
   this.focusOnPlaceInput();
 }

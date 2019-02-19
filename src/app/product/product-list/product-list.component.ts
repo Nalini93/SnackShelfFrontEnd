@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
- 
+import {  ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { RouterModule, Routes, Router } from '@angular/router';
@@ -23,6 +23,7 @@ export class ProductListComponent implements OnInit {
      this.products = data;
      console.log(data);
      this.productService.productsData=data;
+     console.log(this.productService.productsData);
      
     });
    //console.log(this.products);
@@ -33,14 +34,17 @@ export class ProductListComponent implements OnInit {
     this.route.navigate(['/']);
   }
 
-  onSelectedFilter(e: any) {
+  onSelectedOption(e) {
+    console.log("in selected filter");
     this.getFilteredExpenseList();
+    
     console.log(this.getFilteredExpenseList);
   }
 
   getFilteredExpenseList() {
     if (this.productService.searchOption.length > 0){
       this.products = this.productService.filteredListOptions();
+      console.log(this.products);
       
     }else {
       this.products = this.productService.productsData;
