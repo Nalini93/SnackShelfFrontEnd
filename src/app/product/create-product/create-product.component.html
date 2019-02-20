@@ -1,0 +1,31 @@
+<form (ngSubmit)= "createProduct(createProductForm)" #createProductForm="ngForm">
+  <div class="form-group">
+    <h1>Product</h1>
+    <p>Please fill in this form to create a new Product.</p>
+    <hr>
+
+    <label for="productName"><b>Product Name</b></label>
+    <input type="text" placeholder="Enter Product Name" ngModel name = "productName" id="productName" class="form-control" required>
+    
+    <label for="companyName"><b>Company Name</b></label>
+    <input type="text" placeholder="Enter Company name" ngModel name = "companyName" id="companyName" class="form-control" required>
+
+    <label for="type"><b>Type</b></label>
+    <input type="text" placeholder="Enter type" ngModel name = "type" id="type" class="form-control" required>
+
+    <label for="quantity"><b>Quantity</b></label>
+    <input type="text" placeholder="Enter Quantity" ngModel name = "quantity" id="quantity" class="form-control" required>
+
+    <label for="productionDate"><b>Production Date</b></label>
+    <input type="text" placeholder="Enter Production Date" ngModel name = "productionDate" id="productionDate" class="form-control" required>
+
+    <label for="expirationDate"><b>Expiration Date</b></label>
+    <input type="text" placeholder="Enter Expiration Date" ngModel name = "expirationDate" id="expirationDate" class="form-control" required>
+   
+    <label for="price"><b>Price</b></label>
+    <input type="text" placeholder="Enter Price" ngModel name = "price" id="price" class="form-control" required>
+    
+    <button type="button" class="btn btn-default"(click)=createProduct(createProductForm.form)>Create</button>
+    
+  </div>
+</form>

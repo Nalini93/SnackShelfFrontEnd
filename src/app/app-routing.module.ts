@@ -8,7 +8,7 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import {OrderListComponent} from './order/order-list/order-list.component'
-
+import {CreateProductComponent} from './product/create-product/create-product.component'
 const routes: Routes = [
 
 { path: '', component: LoginComponent },
@@ -19,6 +19,7 @@ const routes: Routes = [
 { path: 'order', component: OrderComponent },
 { path: 'user-list', component: UserListComponent},
 {path: 'order-list', component: OrderListComponent},
+{path: 'create-product', component: CreateProductComponent},
 { path: '**', redirectTo: '' }
 ];
 

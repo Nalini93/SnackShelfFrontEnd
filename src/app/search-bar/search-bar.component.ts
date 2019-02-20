@@ -27,6 +27,7 @@ export class SearchBarComponent implements OnInit {
       console.log(this.allProducts);
     });
     console.log(this.allProducts);
+    // when user types something in input, the value changes will come through this
     this.myControl.valueChanges.subscribe(userInput => {
       this.autoCompleteExpenseList(userInput);
   })
@@ -36,6 +37,7 @@ export class SearchBarComponent implements OnInit {
     let categoryList = this.filterCategoryList(input)
     this.autoCompleteList = categoryList;
 }
+// this is where filtering the data happens according to you typed value
 filterCategoryList(val) {
   var categoryList = []
   if (typeof val != "string") {
@@ -47,11 +49,12 @@ filterCategoryList(val) {
   return val ? this.allProducts.filter(s => s.productName.toLowerCase().indexOf(val.toLowerCase()) != -1)
       : this.allProducts;
 }
+// after you clicked an autosuggest option, this function will show the field you want to show in input
 displayFn(product: Product) {
   let k = product ? product.productName : product;
   return k;
 }
-
+//function will run and the option inserted in input will be pushed in an searchOption array
 filterPostList(event) {
   var products = event.source.value;
   console.log(products);
