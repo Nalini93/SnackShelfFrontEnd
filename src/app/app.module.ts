@@ -16,6 +16,7 @@ import {ProductService} from './product/product.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { CreateProductComponent} from './product/create-product/create-product.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { OrderListComponent } from './order/order-list/order-list.component';
 import { OrderService } from './order/order.service';
@@ -36,6 +37,7 @@ RegisterComponent,
 UserListComponent,
 OrderListComponent,
 SearchBarComponent,
+CreateProductComponent
 
 
 

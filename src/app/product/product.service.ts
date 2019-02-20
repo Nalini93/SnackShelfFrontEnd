@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from './product';
+import { Options } from 'selenium-webdriver/chrome';
 
 
 @Injectable({
@@ -47,20 +48,42 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}/${id}`, this.httpOptions) ;
   } 
 
-  filteredListOptions() {
-    let products = this.productsData;
-        let filteredPostsList = [];
-        for (let product of products) {
-            for (let options of this.searchOption) {
-                if (options.productName === product.productName) {
-                  filteredPostsList.push(product);
-                }
-            }
-        }
-        console.log(filteredPostsList);
-        return filteredPostsList;
-  }
+  /*filteredListOptions() {
+  let products = this.productsData;
+  console.log(this.productsData);
+      let filteredPostsList = [];
+      for (let product of products) {
+          for (let options of this.searchOption) {
+              if (options.productName === product.productName) {
+                filteredPostsList.push(product);  
+              }
+          }
+      }
+      console.log(filteredPostsList);
+      return filteredPostsList;
+}*/
+
+filteredListOptions() {
+  let products = this.productsData;
+  let options = this.searchOption;
+  console.log(this.productsData); 
+     var filteredPostsList= this.productsData.filter(function(product){
+       console.log(options);
+      for (let option of options) {
+       if (product.productName==option.productName){
+         return true;
+       }
+      }return false;
+     }); 
+      console.log(filteredPostsList);
+      return filteredPostsList;
 }
+
+ 
+}
+
+
+
   
 
 
